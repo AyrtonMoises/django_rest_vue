@@ -2,7 +2,6 @@ from django.contrib.auth import get_user_model
 
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
 
 
 User = get_user_model()
@@ -11,7 +10,7 @@ User = get_user_model()
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "username", "email", "is_superuser"]
+        fields = ["id", "username", "email", "is_superuser", "password"]
 
     def create(self, validated_data):
         if "password" in validated_data:
